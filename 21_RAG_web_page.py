@@ -10,6 +10,7 @@ from typing import List
 from langchain_core.output_parsers import BaseOutputParser
 from langchain_core.prompts import PromptTemplate
 from pydantic import BaseModel, Field
+from langchain_core.messages import SystemMessage, HumanMessage
 import logging
 logging.basicConfig()
 logging.getLogger("langchain.retrievers.multi_query").setLevel(logging.INFO)
@@ -62,10 +63,33 @@ llm_chain = QUERY_PROMPT | llm | output_parser
 retriever = MultiQueryRetriever(
     retriever=vectordb.as_retriever(), llm_chain=llm_chain, parser_key="lines"
 )  # "lines" is the key (attribute name) of the parsed output
-logging.info(retriever)
-# Results
-unique_docs = retriever.invoke("Give info about the people in the flight?")
 
-print(unique_docs)
+logging.info(retriever)
+# Define a system prompt that tells the model how to use the retrieved context
+system_prompt = """You are an assistant for question-answering tasks. 
+Use the following pieces of retrieved context to answer the question. 
+If you don't know the answer, just say that you don't know. 
+Use three sentences maximum and keep the answer concise.
+Context: {context}:"""
+    
+# Define a question
+question = """Give info about the people in the flight?"""
+
+unique_docs = retriever.invoke(question)
+print("\n\n\nRetrived Data : ",unique_docs)
+
+# Combine the documents into a single string
+docs_text = "".join(d.page_content for d in unique_docs)
+
+print("\n\n\nFinal Context : ",docs_text)
+
+# Populate the system prompt with the retrieved context
+system_prompt_fmt = system_prompt.format(context=docs_text)
+
+
+# Generate a response
+response = llm.invoke([SystemMessage(content=system_prompt_fmt),HumanMessage(content=question)])
+
+print("\n\n\nRAG Response : ",response.content)
 
 
