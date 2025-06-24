@@ -19,7 +19,5 @@ class ResponseFormatter(BaseModel):
     confidence_score : float = Field(description="The confidence score of the emotion conveyed in the response, between 0 and 1.")
     
 model_with_tools = model.bind_tools([ResponseFormatter])
-
 response = model_with_tools.invoke("Hurrah! I just won the lottery!")
-
 print(response.additional_kwargs['tool_calls'][0]['function']['arguments'])

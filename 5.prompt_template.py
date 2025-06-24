@@ -37,7 +37,6 @@ prompt_template = ChatPromptTemplate.from_messages([
     MessagesPlaceholder(variable_name="msgs")
 ])
 
-
 chat_history = [HumanMessage(content="hi!")]
 messages = prompt_template.format_messages(msgs=chat_history)
 print(messages)

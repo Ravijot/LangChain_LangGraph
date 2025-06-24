@@ -64,5 +64,4 @@ full_chain = {"topic": chain, "question": lambda x: x["question"]} | RunnableLam
 )
 
 print(full_chain.invoke({"question": "Give me a Cpp fibonacci series program?"}))
-
 #One can also refer to RunnableBranch to create a more complex routing logic.

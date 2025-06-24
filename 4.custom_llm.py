@@ -76,7 +76,6 @@ class CustomLLM(LLM):
         return "custom_openai_wrapper"
 
 llm = CustomLLM()
-
 print(llm._llm_type)
 print(llm._identifying_params)
 # print(llm._call("Hello, how are you?"))

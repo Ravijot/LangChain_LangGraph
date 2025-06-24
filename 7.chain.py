@@ -20,7 +20,6 @@ class ResponseFormatter(BaseModel):
     emotion : str = Field(description="The emotion conveyed in the response e.g. happy, sad, angry, etc.")
     confidence_score : float = Field(description="The confidence score of the emotion conveyed in the response, between 0 and 1.")
 
-
 prompt = PromptTemplate(
     input_variables=["input"],
     template="What emotion is conveyed in the following text? {input}",

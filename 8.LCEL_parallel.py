@@ -28,6 +28,5 @@ parallel_chain = RunnableParallel({
     "population": chain2
 })
 
-# Run it
 result = parallel_chain.invoke({"place": "Japan"})
 print(result)
