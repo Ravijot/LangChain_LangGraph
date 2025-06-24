@@ -22,3 +22,6 @@ print(ai_message)
 
 # for chunk in model.stream(messages):
 #     print(chunk.content, end="", flush=True)
+
+
+

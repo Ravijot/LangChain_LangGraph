@@ -10,9 +10,3 @@
 
 5. Now you are ready to run the programs. Happy Learning.
 
-## Script Order
-
-1. [1.setup.py](./1.setup.py)
-2. [2.preprocessing.py](./2.preprocessing.py)
-3. [3.training.py](./3.training.py)
-4. [4.evaluation.py](./4.evaluation.py)
