@@ -4,3 +4,4 @@ venv/
 figures
 *.ipynb
 .ipynb_checkpoints/
+__pycache__/
