@@ -28,3 +28,12 @@ def logic(x: int, *, previous: int | None = None) -> entrypoint.final[str, int]:
 #You want to return something different than what gets remembered
 print(logic.invoke(4,config))
 print(logic.invoke(6,config))
+
+"""
+
+entrypoint.final
+entrypoint.final is a special primitive that can be returned from an entrypoint and allows decoupling the value that is saved in the checkpoint from the return value of the entrypoint.
+
+The first value is the return value of the entrypoint, and the second value is the value that will be saved in the checkpoint. The type annotation is entrypoint.final[return_type, save_type].
+
+"""
