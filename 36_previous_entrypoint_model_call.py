@@ -28,7 +28,6 @@ checkpointer = MemorySaver()
 def workflow(inputs: list[BaseMessage], *, previous: list[BaseMessage]):
     if previous:
         inputs = add_messages(previous, inputs)
-
     response = call_model(inputs).result()
     return entrypoint.final(value=response, save=add_messages(inputs, response))
 
