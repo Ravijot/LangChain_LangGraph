@@ -103,3 +103,21 @@ human_review = input("Please provide your input (a/r): ").strip().lower()
 result2 = graph.invoke(Command(resume={"human_input": human_review}), config=config)
 print("Final Result after Human Input:")
 print(result2)
+
+""" 
+This code will create a graph of above code and save as graph_output.png in local folder
+"""
+from langchain_core.runnables.graph import CurveStyle, MermaidDrawMethod, NodeStyles
+from PIL import Image as PILImage
+import io
+
+# Get the raw PNG bytes from Mermaid rendering
+png_bytes = graph.get_graph().draw_mermaid_png()
+
+# Save it to a file
+with open("hitl.png", "wb") as f:
+    f.write(png_bytes)
+
+# Optional: open it using default image viewer
+img = PILImage.open("hitl.png")
+img.show()
