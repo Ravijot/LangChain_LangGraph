@@ -14,3 +14,6 @@ def multiply(a: int, b: int) -> int:
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
+    
+#We are going to use this file as a tool for math operations in the MCP server in 53_mcp_demo.py
+    
