@@ -8,5 +8,9 @@
 
 4. Install all required packages with : pip install -r requirements.txt
 
-5. Now you are ready to run the programs. Happy Learning.
+5. Now you are ready to run the programs. 
+
+6. You can run any program like : python {filename}.py
+
+7. Happy Learning.
 
